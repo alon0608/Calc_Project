@@ -14,10 +14,10 @@ def in_to_post(exercise):
             expression.append(Calculator.negation(int(char.lstrip("~"))))
 
         elif char.isdigit():
-            expression.append(int(char))
+            expression.append(char)
 
         elif char.replace('.', '', 1).replace('-', '', 1).isdigit():
-            expression.append(float(char))
+            expression.append(char)
         else:
             if char == "(":
                 operators_lst.append(char)

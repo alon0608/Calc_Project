@@ -9,23 +9,7 @@ from exception_checker import exceptions_checker
 
 
 def splitter(expression):
-    """
-    Splits the input mathematical expression into individual elements (numbers, operators, etc.).
-    - Handles decimal numbers and ensures valid decimal placement.
-    - Removes unnecessary spaces and tabs.
-    - Calls minus_checker to process unary minus.
-    - Calls exceptions_checker to validate the final list of elements.
 
-    Args:
-        expression (str): The mathematical expression to split.
-
-    Returns:
-        list: A list of elements (numbers, operators, etc.) after processing.
-
-    Raises:
-        InvalidDecimalPlacementError: If a decimal is placed incorrectly.
-        ConsecutiveDecimalsError: If there are multiple consecutive decimals.
-    """
     final_list = []
     current = ""
     decimal_point_count = 0
