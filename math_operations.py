@@ -1,5 +1,6 @@
-from math import pow
-
+from math import pow, factorial
+from Custom_Exception_Class import *
+from decimal import Decimal
 class Calculator:
     @staticmethod
     def add(num1, num2):
@@ -25,7 +26,7 @@ class Calculator:
 
     @staticmethod
     def modulus(num1, num2):
-        """Returns the remainder of num1 divided by num2. Raises an error if dividing by zero"""
+        """Returns the remainder of num1 divided by num2, Raise an error if dividing by zero"""
         if num2 == 0:
             raise ZeroDivisionError("You can't perform modulus by zero")
         return num1 % num2
@@ -33,38 +34,52 @@ class Calculator:
     @staticmethod
     def max(num1, num2):
         """Returns the maximum of num1 and num2"""
-        return num1 if num1 > num2 else num2
+        if num1 > num2:
+            return num1
+        return num2
 
     @staticmethod
     def min(num1, num2):
         """Returns the minimum of num1 and num2"""
-        return num1 if num1 < num2 else num2
-
+        if num1 < num2:
+            return num1
+        return num2
     @staticmethod
-    def average(num1, num2):
+    def average(num1,num2):
         """Returns the average of num1 and num2"""
-        return (num1 + num2) / 2
-
+        return (num1+num2)/2
     @staticmethod
     def negation(num1):
-        """Returns the negation of num1"""
-        return num1 * -1
-
+        return num1*(-1)
     @staticmethod
-    def pow(num1, num2):
-        """Returns num1 raised to the power of num2"""
-        return pow(num1, num2)
-
+    def pow1(num1,num2):
+        if num1==0 and num2==0:
+            raise ZeroPowerByZero()
+        if num1<=0 and isinstance(num2,float):
+            raise NegativeSqrt()
+        try:
+            return pow(num1,num2)
+        except:
+            raise OverFlowResult
     @staticmethod
     def factorial(num1):
-        """Returns the factorial of num1"""
-        if num1 == 0 or num1 == 1:
+        if num1<0 :
+            raise NegativeFactorial()
+        if num1>170:
+            raise OverFlowResult
+        if int(num1)!=num1:
+            raise FloatFactorial()
+        if num1==0 or num1==1:
             return 1
-        return num1 * Calculator.factorial(num1 - 1)
-
+        return num1*Calculator.factorial(num1-1)
     @staticmethod
     def factorial_sum(num1):
-        """Returns the sum of the digits of num1"""
-        if num1 == 0:
-            return 0
-        return int(num1 % 10) + Calculator.factorial_sum(int(num1 / 10))
+        sum=0
+        num2=float(num1)
+        if num2<0 :
+            raise NegativeFactorialSum()
+        num_str=str(num1)
+        for char in num_str:
+            if char.isdigit():
+                sum+=int(char)
+        return sum
