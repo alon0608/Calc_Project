@@ -1,5 +1,7 @@
 from itertools import filterfalse
 from symbol import continue_stmt
+
+from lib2to3.fixer_util import String
 from os import remove
 from Custom_Exception_Class import TwoOrMoreTildas, MissingOperandError,NegativeFactorial,NegativeFactorialSum,NegativeSqrt,TooMuchOperatorsInARow
 import Operators_dict
