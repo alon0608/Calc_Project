@@ -44,7 +44,7 @@ def tilda_exception(lst,index,count,tilda_check):
         raise MissingOperandError("~")
     elif  index!=0 and lst[index-1] in ("<","_") :
         raise TooMuchOperatorsInARow("~","-")
-    elif tilda_check==1:
+    elif tilda_check==1 and lst[index-1]!="(":
         raise TwoOrMoreTildas()
     else:
         return
