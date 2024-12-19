@@ -1,3 +1,6 @@
+from symtable import Class
+
+
 class CalculatorError(Exception):
     """Base class for calculator exceptions."""
     def __init__(self, message="An error occurred in the calculator"):
@@ -31,12 +34,16 @@ class ZeroPowerByZero(CalculatorError):
     """Exception raised when trying to compute 0^0."""
     def __init__(self, message=None):
         super().__init__(message or "You cannot compute zero raised to the power of zero.")
+class OverFlowResult(CalculatorError):
+    """Exception raised when trying to compute 0^0."""
+    def __init__(self, message=None):
+        super().__init__(message or "Result exceeds the maximum allowable float value.")
 class TooMuchOperatorsInARow(CalculatorError):
-    """Exception raised when puts two operators in a row."""
+    """Exception raised when trying to compute 0^0."""
     def __init__(self, op1,op2):
         super().__init__(f"You Cant put '{op1}' After '{op2}'")
 class TwoOrMoreTildas(CalculatorError):
-    """Exception raised when puts two or more tildas before a number."""
+    """Exception raised when trying to compute 0^0."""
     def __init__(self):
         super().__init__("You Cant Put more than one tilda before a number")
 class MissingOperandError(CalculatorError):
@@ -44,35 +51,49 @@ class MissingOperandError(CalculatorError):
     def __init__(self, operator, message=None):
         super().__init__(message or f"Missing operand after operator '{operator}'.")
 class EmptyParentheses(CalculatorError):
-    """Exception raised parentheses are empty."""
+    """Exception raised when trying to compute 0^0."""
     def __init__(self):
         super().__init__("you need to put expression in the Parentheses ")
 class NegativeFactorial(CalculatorError):
-    """Exception raised when trying to compute negative factorial."""
+    """Exception raised when trying to compute 0^0."""
     def __init__(self):
         super().__init__("The Calculator Cant Compute Negative Factorial")
 class NegativeFactorialSum(CalculatorError):
-    """Exception raised when trying to compute negative factorial sum."""
+    """Exception raised when trying to compute 0^0."""
     def __init__(self):
         super().__init__("The Calculator Cant Compute Negative FactorialSum")
-
+class FloatFactorialSum(CalculatorError):
+    """Exception raised when trying to compute 0^0."""
+    def __init__(self):
+        super().__init__("The Calculator Cant Compute Float FactorialSum")
 class FloatFactorial(CalculatorError):
-    """Exception raised when trying to compute float factorial."""
+    """Exception raised when trying to compute 0^0."""
     def __init__(self):
         super().__init__("The Calculator Cant Compute Float Factorial")
 class ConsecutiveDecimalsError(CalculatorError):
-    """Exception raised when puts more than one decimal point before a number."""
+    """Exception raised when trying to compute 0^0."""
     def __init__(self):
         super().__init__("Multiple consecutive decimal points detected")
 class LeadingOperatorError(CalculatorError):
-    """Exception raised when the expression starts with operator without operand before."""
+    """Exception raised when trying to compute 0^0."""
     def __init__(self,op):
         super().__init__(f"Expression cannot start with the operator '{op}' without a preceding operand")
 class InvalidDecimalPlacementError(CalculatorError):
-    """Exception raised when puts invalid placement of a decimal point."""
+    """Exception raised when trying to compute 0^0."""
     def __init__(self):
         super().__init__("Invalid placement of a decimal point Please revise the number format")
 class NegativeSqrt(CalculatorError):
-    """Exception raised when trying to compute negative^ 1<num<-1."""
+    """Exception raised when trying to compute 0^0."""
     def __init__(self):
         super().__init__("The Calculator Cant Compute Negative Sqrt")
+class MissingOperatorAfterFactorials(CalculatorError):
+    """Exception raised when trying to compute 0^0."""
+
+    def __init__(self,char):
+        super().__init__(f"You cant put number right after '{char}'")
+
+class MissingOperator(CalculatorError):
+    """Exception raised when trying to compute 0^0."""
+
+    def __init__(self,char,op):
+        super().__init__(f"You need to put operator between '{char}' and '{op}'")
