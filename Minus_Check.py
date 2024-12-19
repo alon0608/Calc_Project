@@ -8,6 +8,13 @@ import Operators_dict
 from Operators_dict import Operators
 
 def minus_checker(lst):
+    """
+    param expression:
+        lst (list): A list of tokens representing the parsed input expression.
+
+    Returns:
+        list: Updated list with right minuses and tilde operators properly processed.
+"""
     count=0
     index=0
     tilda_check=0
@@ -35,9 +42,17 @@ def minus_checker(lst):
     return lst
 
 def is_unary(lst,index,tilda_check):
-    if (index == 0 and lst[index] == "-" and tilda_check == 0) or (
-            index != 0 and lst[index - 1] == "(" and lst[index] == "-" and tilda_check == 0):
-        return True
+    """
+    param expression:
+        lst (list): A list of tokens representing the parsed input expression.
+        index (int): The current index in the list being evaluated.
+        tilda_check (int): A flag indicating whether a tilde operator has been encountered previously.
+
+    Returns:
+        bool: True if the minus sign is unary, False otherwise.
+    """
+    return (index == 0 and lst[index] == "-" and tilda_check == 0) or (
+            index != 0 and lst[index - 1] == "(" and lst[index] == "-" )
 
 def tilda_exception(lst,index,count,tilda_check):
     if index==len(lst)-1:
@@ -46,5 +61,3 @@ def tilda_exception(lst,index,count,tilda_check):
         raise TooMuchOperatorsInARow("~","-")
     elif tilda_check==1 and lst[index-1]!="(":
         raise TwoOrMoreTildas()
-    else:
-        return

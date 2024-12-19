@@ -1,6 +1,24 @@
 from Custom_Exception_Class import *
 from Operators_dict import Operators
 def exceptions_checker(final_list):
+    """
+    Args:
+    final_list (list): A list of tokens representing the parsed input expression.
+
+     Raises:
+        CalculatorInputError: If the token list is empty.
+        DivisionByZeroError: If division by zero occurs.
+        IllegalCharacterError: If an unrecognized or invalid character is found.
+        ParenthesisMismatchError: If parentheses are mismatched.
+        EmptyParentheses: If parentheses do not enclose valid content.
+        TooMuchOperatorsInARow: If multiple operators appear in sequence without valid operands.
+        MissingOperatorAfterFactorials: If no operator is present after a factorial symbol.
+        MissingOperator: If an operator is missing between numbers or parentheses.
+        MissingOperandError: If an operator lacks a corresponding operand.
+
+    Returns:
+        None:if the list Passes all tests its continue to the next func else raises error
+"""
     if not final_list:
         raise CalculatorInputError("Input list cannot be empty.")
 

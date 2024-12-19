@@ -9,6 +9,15 @@ from exception_checker import exceptions_checker
 
 
 def splitter(expression):
+    """
+    param expression:
+        expression (str): A mathematical expression provided as a string.
+    returns:
+        list: A list of tokens representing the parsed and processed expression.
+    raises:
+        InvalidDecimalPlacementError: If a decimal point is placed incorrectly in a number.
+        ConsecutiveDecimalsError: If multiple decimal points are found in a single number.
+    """
 
     final_list = []
     current = ""

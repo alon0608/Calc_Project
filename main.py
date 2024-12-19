@@ -18,6 +18,7 @@ def main():
                 break
 
 
+
             lst3 = splitter(lst)
             print(f"Split Expression: {lst3}")
 

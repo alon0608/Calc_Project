@@ -50,9 +50,12 @@ class Calculator:
         return (num1+num2)/2
     @staticmethod
     def negation(num1):
+        """return:negation of the number it gets"""
         return num1*(-1)
     @staticmethod
     def pow1(num1,num2):
+        """return:num1 power by num2
+            raises:ZeroPowerByZero,NegativeSqrt,OverFlowResult"""
         if num1==0 and num2==0:
             raise ZeroPowerByZero()
         if num1<=0 and isinstance(num2,float):
@@ -60,13 +63,18 @@ class Calculator:
         try:
             return pow(num1,num2)
         except:
-            raise OverFlowResult
+            raise OverFlowResultPow
     @staticmethod
     def factorial(num1):
+        """
+        returns: factorial
+        raise: NegativeFactorial for negative numbers
+               OverFlowFactorial for 171 or more factorial
+                FloatFactorial for float number """
         if num1<0 :
             raise NegativeFactorial()
         if num1>170:
-            raise OverFlowResult
+            raise OverFlowResultFactorial
         if int(num1)!=num1:
             raise FloatFactorial()
         if num1==0 or num1==1:
@@ -74,6 +82,9 @@ class Calculator:
         return num1*Calculator.factorial(num1-1)
     @staticmethod
     def factorial_sum(num1):
+        """
+        returns factorial sum
+        raise: NegativeFactorialSum for negative numbers"""
         sum=0
         num2=float(num1)
         if num2<0 :
@@ -83,3 +94,4 @@ class Calculator:
             if char.isdigit():
                 sum+=int(char)
         return sum
+
